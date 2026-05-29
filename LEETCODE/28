@@ -1,0 +1,18 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        int len = needle.length();
+        int a = 0;
+        int b = len-1;
+
+        while(b < haystack.length()){
+            if(needle.equals(haystack.substring(a,b+1))){
+                return a;
+            }else{
+                a++;
+                b++;
+            }
+        }
+
+        return -1;
+    }
+}
