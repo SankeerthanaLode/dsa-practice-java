@@ -1,0 +1,26 @@
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder word = new StringBuilder();
+        StringBuilder ans = new StringBuilder();
+        
+        char ch;
+
+        for(int i = 0; i < s.length(); i++){
+            ch = s.charAt(i);
+
+            if(ch != ' '){
+                word.append(ch);
+            }else{
+                ans.append(word.reverse());
+                word.setLength(0);
+                ans.append(" ");
+            }
+        }
+
+        ans.append(word.reverse());
+
+        String new_ans = ans.toString();
+
+        return new_ans;
+    }
+}
