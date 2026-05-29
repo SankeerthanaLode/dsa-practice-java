@@ -1,0 +1,35 @@
+class Solution {
+    public int firstUniqChar(String s) {
+        LinkedHashMap<Character,Integer> map = new LinkedHashMap<>();
+        char ch;
+        int index;
+
+        for(int i = 0; i < s.length(); i++){
+            ch = s.charAt(i);
+
+            if(map.containsKey(ch)){
+                map.put(ch, map.get(ch)+1);
+            }else{
+                map.put(ch, 1);
+            }
+        }
+
+        for(char key : map.keySet()){
+            if(map.get(key) == 1){
+                index = find_index(s, key);
+                return index;
+            }
+        }
+
+        return -1;
+    }
+
+    static int find_index(String s, char key){
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == key){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
