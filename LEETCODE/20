@@ -1,0 +1,45 @@
+class Solution {
+    public boolean isValid(String s) {
+        Deque<Character> st = new ArrayDeque<>();
+        char ch;
+        char popped;
+
+        if(s.length() == 1){
+            return false;
+        }
+
+        for(int i = 0; i < s.length(); i++){
+            ch = s.charAt(i);
+
+            if(ch == '(' || ch == '{' || ch == '['){
+                st.push(ch);
+            }else{
+                if(!st.isEmpty()){
+                    popped = st.pop();
+                    if(!matched(popped, ch)){
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+            }
+        }
+        if(!st.isEmpty()){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    static boolean matched(char popped, char ch){
+        if(popped == '(' && ch == ')'){
+            return true;
+        }else if(popped == '{' && ch == '}'){
+            return true;
+        }else if(popped == '[' && ch == ']'){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
