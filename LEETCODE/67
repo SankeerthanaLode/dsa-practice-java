@@ -1,0 +1,62 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        String ans = "";
+
+        if(a.length() < b.length()){
+            a = addZeroes(a, b.length()-a.length());
+        }else if(a.length() > b.length()){
+            b = addZeroes(b, a.length()-b.length());
+        }
+
+        ans = binAddition(a, b);
+
+        return ans;
+    }
+
+    static String addZeroes(String s, int length){
+        int i = 0;
+        while(i < length){
+            s = "0" + s;
+            i++;
+        }
+
+        return s;
+    }
+
+    static String binAddition(String a, String b){
+        int length = a.length();
+        String ans = "";
+        int carry=0;
+        for(int j = length - 1; j >= 0; j--){
+            if((a.charAt(j) == '0' && b.charAt(j) == '1') || (a.charAt(j) == '1' && b.charAt(j) == '0')){
+                if(carry == 1){
+                    ans = "0" + ans;
+                    carry = 1;
+                }else{
+                    ans = "1" + ans;
+                carry = 0;
+                }
+            }else if(a.charAt(j) == '0' && b.charAt(j) == '0'){
+                if(carry == 1){
+                    ans = "1" + ans;
+                }else{
+                    ans = "0" + ans;
+                }
+                carry = 0;
+            }else{
+                if(carry == 1){
+                    ans = "1" + ans;
+                }else{
+                    ans = "0" + ans;
+                }
+                carry = 1;
+            }
+        }
+
+        if(carry == 1){
+            ans = "1" + ans;
+        }
+
+        return ans;
+    }
+}
