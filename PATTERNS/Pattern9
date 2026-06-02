@@ -1,0 +1,33 @@
+import java.util.*;
+
+public class Pattern1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter a number: ");
+        int n = sc.nextInt();
+
+        for(int m = 0; m < n; m++){
+            for(int s = m; s < n-1; s++){
+                System.out.print(" ");
+            }
+            for(int t = 0; t < 2*m+1; t++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        for(int i = 0; i < n; i++){
+
+            for(int k = 0; k < i; k++){
+                System.out.print(" ");
+            }
+
+            for(int j = 2*n-1; j >= 2*i+1; j--){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
