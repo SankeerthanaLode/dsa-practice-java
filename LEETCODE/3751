@@ -1,0 +1,37 @@
+class Solution {
+    public int totalWaviness(int num1, int num2) {
+        int wav = 0;
+        int prev, next, curr;
+        int i;
+
+        if(num1 <= 100 && num2 <= 100){
+            return wav;
+        }
+
+        for(int j = num1; j <= num2; j++){
+            i = j;
+            next = i%10;
+            i = i/10;
+            curr = i%10;
+            i = i/10;
+
+            while(i != 0){
+                prev = i%10;
+                i = i/10;
+
+                if(curr > next && curr > prev){
+                    wav++;
+                }
+                
+                if(curr < next && curr < prev){
+                    wav++;
+                }
+                next = curr;
+                curr = prev;
+            }
+  
+        }
+
+        return wav;
+    }
+}
