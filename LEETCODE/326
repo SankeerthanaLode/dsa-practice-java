@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        if(n == 1){
+            return true;
+        }
+
+        if(n%2 == 0){
+            return false;
+        }else{
+            if(n%10 == 5){
+                return false;
+            }else{
+                if(ispower(n)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        } 
+    }
+
+    static boolean ispower(int n){
+        if(n == 3){
+            return true;
+        }
+
+        if(n%3 == 0){
+            return ispower(n/3);
+        }
+
+        return false;
+    }
+}
