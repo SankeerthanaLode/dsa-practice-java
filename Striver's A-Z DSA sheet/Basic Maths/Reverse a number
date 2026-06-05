@@ -1,20 +1,18 @@
-import java.util.*;
+class Solution {
+    public int reverse(int x) {
+        long rev = 0;
+        int num;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter a number: ");
-        int num = sc.nextInt();
-        int rev = 0;
-
-        while(num != 0){
-            int n = num%10;
-            rev = (rev*10) + n;
-            num = num/10;
+        while(x != 0){
+            num = x%10;
+            rev = (rev*10) + (long)num;
+            x /= 10;
         }
 
-        System.out.println("Reverse number is: " + rev);
-        sc.close();
+        if(rev < -2147483648 || rev > 2147483647){
+            return 0;
+        }
+
+        return (int)rev;
     }
 }
