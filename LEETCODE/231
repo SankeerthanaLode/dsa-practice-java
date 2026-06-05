@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if(n == 1){
+            return true;
+        }
+
+        if(n%2 == 1){
+            return false;
+        }else{
+            if(n%10 == 0){
+                return false;
+            }else{
+                if(ispower(n)){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+    }
+
+    static boolean ispower(int n){
+        if(n == 2){
+            return true;
+        }
+
+        if(n%2 == 0){ 
+            return ispower(n/2);
+        }
+
+        return false;
+    }
+}
