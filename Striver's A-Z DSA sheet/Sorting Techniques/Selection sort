@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the length of the array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        int min, min_index;
+        int i, j;
+
+        System.out.println();
+        System.out.println("Enter the elements of the array: ");
+        for(int k = 0; k < n; k++){
+            arr[k] = sc.nextInt();
+        }
+
+        for(i = 0; i < n-1; i++){
+            min = arr[i];
+            min_index = i;
+            for(j = i+1; j < n; j++){
+                if(min > arr[j]){
+                    min = arr[j];
+                    min_index = j;
+                }
+            }
+            if(min_index != i){
+                swap(arr, i, min_index);
+            }
+
+        }
+
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+        
+
+        sc.close();
+    }
+
+    static void swap(int[] arr, int index1, int index2){
+        int temp;
+
+        temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+
+        return;
+    }
+}
