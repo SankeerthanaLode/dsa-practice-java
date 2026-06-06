@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter a string: ");
+        String s = sc.nextLine();
+        String res = "";
+
+        res = reverseString(s, res, s.length()-1); 
+        System.out.println(res);
+        sc.close();
+    } 
+
+    static String reverseString(String s, String res, int length){
+        if(length < 0){
+            return res;
+        }
+
+        res = res + s.charAt(length);
+        return reverseString(s, res, length-1);
+    }
+}
