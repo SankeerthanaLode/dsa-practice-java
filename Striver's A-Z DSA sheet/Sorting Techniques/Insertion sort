@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the length of the array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        
+
+        System.out.println();
+        System.out.println("Enter the elements of the array: ");
+        for(int k = 0; k < n; k++){
+            arr[k] = sc.nextInt();
+        }
+
+        int i;
+        int j;
+        int key;
+        int key_index;
+
+        for(i = 1; i < n; i++){
+            key = arr[i];
+            key_index = i;
+            j = i-1;
+            while(j >= 0){
+                if(key < arr[j]){
+                    arr[j+1] = arr[j];
+                    key_index = j;
+                    j--;
+                }else{
+                    break;
+                }
+            }
+            arr[key_index] = key;
+        }
+        
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+        
+        sc.close();
+    }
+}
