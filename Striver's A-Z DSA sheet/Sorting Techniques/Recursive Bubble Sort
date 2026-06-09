@@ -1,0 +1,66 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the length of the array: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        
+
+        System.out.println();
+        System.out.println("Enter the elements of the array: ");
+        for(int k = 0; k < n; k++){
+            arr[k] = sc.nextInt();
+        }
+
+        bubble(arr, n-1);
+
+
+        System.out.println("Sorted Array: " + Arrays.toString(arr));
+        sc.close();
+    }
+
+    static void bubble(int[] arr, int n){
+        if(n <= 1){
+            return;
+        }
+
+        int i = 0;
+        boolean check = false;
+        
+        check = compare(arr, i, n, check);
+
+        if(check == false){
+            return;
+        }
+
+        bubble(arr, n-1);
+    }
+
+    static boolean compare(int[] arr, int i, int n, boolean check){
+        if(i > n-1){
+            return check;
+        }
+
+        if(arr[i] > arr[i+1]){
+            swap(arr, i, i+1);
+            check = true;
+        }
+
+        return compare(arr, i+1, n, check);
+    }
+    
+
+    static void swap(int[] arr, int idx1, int idx2){
+        int temp;
+
+        temp = arr[idx1];
+        arr[idx1] = arr[idx2];
+        arr[idx2] = temp;
+
+        return;
+    }
+}
+
