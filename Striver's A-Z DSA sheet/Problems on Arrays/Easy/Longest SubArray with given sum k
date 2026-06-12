@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] nums = {-3, 2, 1};
+        int target = 6;
+
+        int n = nums.length;
+        int left = 0;
+        int right = 1;
+        int sum;
+        int max_array = 0;
+
+
+        while(right < n){
+            sum = array_sum(nums, left, right);
+            if(sum == target){
+                if(max_array < right-left+1){
+                    max_array = right-left+1;
+                }
+                right++;
+            }else if(sum < target){
+                right++;
+            }else{
+                left++;
+            }
+        }
+
+        System.out.println("Max subarray: " + max_array);
+        sc.close();
+    }
+
+    static int array_sum(int[] nums, int left, int right){
+        int sum = 0;
+        for(int i = left; i <= right; i++){
+            sum = sum + nums[i];
+        }
+
+        return sum;
+    }
+}
