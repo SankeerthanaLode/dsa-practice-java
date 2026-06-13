@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] nums = {-2, -3, -7, -2, -10, -4};
+
+        int current = 0;
+        int max = Integer.MIN_VALUE;
+        int temp = 0;
+        int left = 0, right = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(current < 0){
+                current = 0;
+                temp = i;
+            }
+
+            current += nums[i];
+
+            if(max < current){
+                max = current;
+                left = temp;
+                right = i;
+            }
+        }
+
+        System.out.print("Subarray with maximum sum is: ");
+        for(int j = left; j <= right; j++){
+            System.out.print(nums[j] + " ");
+        }
+        sc.close();
+    }
+}
