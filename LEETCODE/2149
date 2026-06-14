@@ -1,0 +1,70 @@
+//FIRST-IMPLEMENTATION
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int i = 0, j = 0, k = 0;
+        int[] ans = new int[nums.length];
+        boolean check = false;
+
+        while(i < nums.length && j < nums.length){
+            if(nums[i] > 0){
+                if(check == false){
+                    ans[k] = nums[i];
+                    k++;
+                    check = true;
+                    i++;
+                } 
+            }else{
+                i++;
+            }
+
+            if(nums[j] < 0){
+                if(check == true){
+                    ans[k] = nums[j];
+                    k++;
+                    check = false;
+                    j++;
+                }
+            }else{
+                j++;
+            }
+        }
+
+        while(j < nums.length){
+            if(nums[j] < 0){
+                if(check == true){
+                    ans[k] = nums[j];
+                    k++;
+                    check = false;
+                    j++;
+                }
+            }else{
+                j++;
+            }
+        }
+
+        return ans;
+    }
+}
+
+//IMPROVISED CODE
+
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int[] ans = new int[nums.length];
+        int a = 0;
+        int b = 1;
+
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] > 0){
+                ans[a] = nums[i];
+                a += 2;
+            }else{
+                ans[b] = nums[i];
+                b += 2;
+            }
+        }
+
+        return ans;
+    }
+}
