@@ -1,0 +1,76 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        if(nums.length == 1){
+            return;
+        }
+
+        if(nums.length == 2){
+            swap(nums, 0, 1);
+            return;
+        }
+
+        if(nums[nums.length - 1] > nums[nums.length - 2]){
+            swap(nums, nums.length - 1, nums.length - 2);
+            return;
+        }else{
+            int j = nums.length - 2;
+            int pivot = j;
+            int less_than_pivot;
+
+            while(j > 0){
+                if(nums[j] <= nums[j-1]){
+                    j--;
+                    if(j == 0){
+                        rev(nums, 0, nums.length-1);
+                        return;
+                    }
+                }else{
+                    pivot = j-1;
+                    less_than_pivot = find_num(nums, pivot, j);
+                    swap(nums, pivot, less_than_pivot);
+                    rev(nums, j, nums.length-1);
+                    return;
+                }
+            }
+
+            return;
+        }
+    }
+
+    static void swap(int[] nums, int i, int j){
+        int temp;
+
+        temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+
+        return;
+    }
+
+    static int find_num(int[] nums, int pivot, int start){
+        int i;
+        for(i = nums.length - 1; i >= start; i--){
+            if(nums[i] > nums[pivot]){
+                return i;
+            }
+        }
+
+        return i;
+    }
+
+    static void rev(int[] nums, int start, int end){
+        int i = start;
+        int j = end;
+        int temp;
+
+        while(i < j){
+            temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+
+        return;
+    }
+}
