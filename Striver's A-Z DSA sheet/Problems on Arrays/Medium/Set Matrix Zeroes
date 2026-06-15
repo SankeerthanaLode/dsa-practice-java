@@ -1,0 +1,57 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+
+        boolean check_row = false;
+        boolean check_col = false;
+
+        if(matrix.length == 1 && matrix[0].length == 1){
+            return;
+        }
+        for(int i = 0; i < matrix.length; i++){
+            for(int j = 0; j < matrix[i].length; j++){
+                if(matrix[i][j] == 0){
+                    matrix[i][0] = -1;
+                    matrix[0][j] = -1;
+                    if(i == 0){
+                        check_row = true;
+                    }
+                    if(j == 0){
+                        check_col = true;
+                    }
+                }
+            }
+        }
+
+        for(int k = 1; k < matrix.length; k++){
+            if(matrix[k][0] == -1){
+                matrix[k][0] = 0;
+                for(int m = 1; m < matrix[k].length; m++){
+                    matrix[k][m] = 0;
+                }
+            }
+        }
+        
+        for(int s = 1; s < matrix[0].length; s++){
+            if(matrix[0][s] == -1){
+                matrix[0][s] = 0;
+                for(int n = 1; n < matrix.length; n++){
+                    matrix[n][s] = 0;
+                }
+            }
+        }
+
+        if(check_row == true){
+            for(int a = 0; a < matrix[0].length; a++){
+                matrix[0][a] = 0;
+            }
+        }
+
+        if(check_col == true){
+            for(int b = 0; b < matrix.length; b++){
+                matrix[b][0] = 0;
+            }
+        }
+
+        return;
+    }
+}
