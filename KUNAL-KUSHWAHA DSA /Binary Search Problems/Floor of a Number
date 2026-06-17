@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] arr = {2, 5, 6, 7, 9, 12, 15, 17, 19, 20, 23, 25};
+        int target = 24;
+
+        int floor_index = findFloor(arr, arr.length, target);
+
+        System.out.println("The Floor is: " + arr[floor_index]);
+
+        sc.close();
+    }
+
+    static int findFloor(int[] arr, int n, int target){
+        int start, end, mid;
+
+        start = 0;
+        end = n-1;
+
+        while(start <= end){
+
+            mid = start + (end - start)/2;
+
+            if(arr[mid] == target){
+                return mid;
+            }else if(arr[mid] < target){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
+            }
+        }
+
+        return end;
+    }
+}
+
+
+
