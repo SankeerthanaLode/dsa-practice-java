@@ -35,3 +35,44 @@ class Solution {
         }
     }
 }
+
+
+//ANOTHER APPROACH
+
+class Solution {
+    public int search(int[] nums, int target) {
+        int i = 0;
+
+        while(i < nums.length - 1){
+            if(nums[i] < nums[i + 1]){
+                i++;
+            }else{
+                break;
+            }
+        }
+
+        int idx = binSearch(nums, target, 0, i);
+        if(idx == -1){
+            idx = binSearch(nums, target, i + 1, nums.length - 1);
+        }
+        return idx;
+    }
+
+    static int binSearch(int[] nums, int target, int start, int end){
+        int mid;
+
+        while(start <= end){
+            mid = (start + end)/2;
+
+            if(nums[mid] == target){
+                return mid;
+            }else if(nums[mid] > target){
+                end = mid - 1;
+            }else{
+                start = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+}
