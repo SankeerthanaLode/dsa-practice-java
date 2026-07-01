@@ -1,0 +1,19 @@
+class Solution {
+    public int findKRotation(ArrayList<Integer> nums) {
+        int i = 0;
+
+        if(nums.get(0) < nums.get(nums.size() - 1)){
+            return 0;
+        }
+
+        while(i < nums.size() - 1){
+            if(nums.get(i) < nums.get(i + 1)){
+                i++;
+            }else{
+                break;
+            }
+        }
+
+        return i+1;
+    }
+}
