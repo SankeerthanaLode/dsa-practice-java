@@ -1,0 +1,22 @@
+class Solution {
+    public int floorSqrt(int n) {
+        int start = 1;
+        int end = n - 1;
+        int mid;
+        double val = Math.sqrt(n);
+
+        while(start <= end){
+            mid = (start + end)/2;
+
+            if(mid == val){
+                return mid;
+            }else if(mid < val){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
+            }
+        }
+
+        return end;
+    }
+}
