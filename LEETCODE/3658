@@ -1,0 +1,28 @@
+class Solution {
+    public int gcdOfOddEvenSums(int n) {
+        int a, b;
+        
+        a = n*n;
+        b = (n*((2*n) + 1)) - a;
+
+        int ans = gcd(a, b); 
+
+        return ans;
+    }
+
+    static int gcd(int a, int b){
+        if(b == 0){
+            return a;
+        }
+
+        return gcd(b, a%b);
+    }
+}
+
+//another solution
+
+class Solution {
+    public int gcdOfOddEvenSums(int n) {
+        return n;
+    }
+}
