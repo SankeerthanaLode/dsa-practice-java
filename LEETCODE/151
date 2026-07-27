@@ -1,0 +1,29 @@
+class Solution {
+    public String reverseWords(String s) {
+        s = s.trim().replaceAll("\\s+", " ");
+        String res = "";
+
+        int i = 0;
+
+        while(i < s.length()){
+            int j = i;
+            while(j < s.length()){
+                if(s.charAt(j) != ' '){
+                    j++;
+                }else{
+                    break;
+                }
+            }
+
+            res = s.substring(i, j) + res;
+
+            if(j < s.length()){
+                res = " " + res;
+            }
+
+            i = j+1;
+        }
+
+        return res;
+    }
+}
